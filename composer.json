@@ -11,10 +11,10 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "WPVK\\Admin\\": "admin/",
-            "WPVK\\Frontend\\": "frontend/",
-            "WPVK\\Includes\\": "includes/",
-            "WPVK\\Api\\": "api/"
+            "AMPV\\Admin\\": "admin/",
+            "AMPV\\Frontend\\": "frontend/",
+            "AMPV\\Includes\\": "includes/",
+            "AMPV\\Api\\": "api/"
         }
     },
     "require-dev": {

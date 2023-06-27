@@ -1,5 +1,5 @@
 <?php
-namespace WPVK\Includes;
+namespace AMPV\Includes;
 
 class Admin {
 
@@ -22,25 +22,22 @@ class Admin {
      * @return void
      */
     public function load_scripts() {
-        wp_register_script( 'wpvk-manifest', WPVK_PLUGIN_URL . 'assets/js/manifest.js', [], rand(), true );
-        wp_register_script( 'wpvk-vendor', WPVK_PLUGIN_URL . 'assets/js/vendor.js', [ 'wpvk-manifest' ], rand(), true );
-        wp_register_script( 'wpvk-admin', WPVK_PLUGIN_URL . 'assets/js/admin.js', [ 'wpvk-vendor' ], rand(), true );
+        wp_register_script( 'ampv-admin', AMPV_PLUGIN_URL . 'assets/build/js/admin.js', [], wp_rand(), true );
+        wp_enqueue_script( 'ampv-admin' );
 
-        wp_enqueue_script( 'wpvk-manifest' );
-        wp_enqueue_script( 'wpvk-vendor' );
-        wp_enqueue_script( 'wpvk-admin' );
-
-        wp_localize_script( 'wpvk-admin', 'wpvkAdminLocalizer', [
-            'adminUrl'  => admin_url( '/' ),
-            'ajaxUrl'   => admin_url( 'admin-ajax.php' ),
-            'apiUrl'    => home_url( '/wp-json' ),
+        wp_localize_script( 'ampv-admin', 'ampvAdminLocalizer', [
+            'adminUrl'   => admin_url( '/' ),
+            'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
+            'apiUrl'     => home_url( '/wp-json' ),
+            'adminEmail' => get_bloginfo( 'admin_email' ),
+            'nonce'      => wp_create_nonce( 'wp_rest' ),
         ] );
     }
 
     public function load_styles() {
-        wp_register_style( 'wpvk-admin', WPVK_PLUGIN_URL . 'assets/css/admin.css' );
+        wp_register_style( 'ampv-admin', AMPV_PLUGIN_URL . 'assets/build/css/admin.css' );
 
-        wp_enqueue_style( 'wpvk-admin' );
+        wp_enqueue_style( 'ampv-admin' );
     }
 
     /**
@@ -51,11 +48,11 @@ class Admin {
         global $submenu;
 
         $capability = 'manage_options';
-        $slug       = 'wp-vue-kickstart';
+        $slug       = 'am-page-view';
 
         $hook = add_menu_page(
-            __( 'WP Vue Kickstart', 'textdomain' ),
-            __( 'WP Vue Kickstart', 'textdomain' ),
+            __( 'AM Page View', 'am-page-view' ),
+            __( 'AM Page View', 'am-page-view' ),
             $capability,
             $slug,
             [ $this, 'menu_page_template' ],
@@ -63,11 +60,8 @@ class Admin {
         );
 
         if( current_user_can( $capability )  ) {
-            $submenu[ $slug ][] = [ __( 'Kickstart', 'textdomain' ), $capability, 'admin.php?page=' . $slug . '#/' ];
-            $submenu[ $slug ][] = [ __( 'Settings', 'textdomain' ), $capability, 'admin.php?page=' . $slug . '#/settings' ];
+            $submenu[ $slug ][] = [ __( 'Dashboard', 'am-page-view' ), $capability, 'admin.php?page=' . $slug . '#/' ];
         }
-
-        // add_action( 'load-' . $hook, [ $this, 'init_hooks' ] );
     }
 
     /**
@@ -83,8 +77,8 @@ class Admin {
      * @since 1.0.0
      */
     public function enqueue_scripts() {
-        wp_enqueue_style( 'wpvk-admin' );
-        wp_enqueue_script( 'wpvk-admin' );
+        wp_enqueue_style( 'ampv-admin' );
+        wp_enqueue_script( 'ampv-admin' );
     }
 
     /**
@@ -92,7 +86,10 @@ class Admin {
      * @since 1.0.0
      */
     public function menu_page_template() {
-        echo '<div class="wrap"><div id="wpvk-admin-app"></div></div>';
+        printf(
+            '<noscript>Please enable JavaScript from you browser settings.</noscript>
+            <div class="wrap"><div id="ampv-admin-app"></div></div>'
+        );
     }
 
 }

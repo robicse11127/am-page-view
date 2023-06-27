@@ -7,39 +7,42 @@ namespace Composer\Autoload;
 class ComposerStaticInite0fd93276d74ff75e6985abf85e86bf3
 {
     public static $prefixLengthsPsr4 = array (
-        'W' => 
+        'A' => 
         array (
-            'WPVK\\Includes\\' => 14,
-            'WPVK\\Frontend\\' => 14,
-            'WPVK\\Api\\' => 9,
-            'WPVK\\Admin\\' => 11,
+            'AMPV\\Includes\\' => 14,
+            'AMPV\\Frontend\\' => 14,
+            'AMPV\\Api\\' => 9,
+            'AMPV\\Admin\\' => 11,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'WPVK\\Includes\\' => 
+        'AMPV\\Includes\\' => 
         array (
             0 => __DIR__ . '/../..' . '/includes',
         ),
-        'WPVK\\Frontend\\' => 
+        'AMPV\\Frontend\\' => 
         array (
             0 => __DIR__ . '/../..' . '/frontend',
         ),
-        'WPVK\\Api\\' => 
+        'AMPV\\Api\\' => 
         array (
             0 => __DIR__ . '/../..' . '/api',
         ),
-        'WPVK\\Admin\\' => 
+        'AMPV\\Admin\\' => 
         array (
             0 => __DIR__ . '/../..' . '/admin',
         ),
     );
 
     public static $classMap = array (
-        'WPVK\\Api\\Api' => __DIR__ . '/../..' . '/api/Api.php',
-        'WPVK\\Includes\\Admin' => __DIR__ . '/../..' . '/includes/Admin.php',
-        'WPVK\\Includes\\Assets' => __DIR__ . '/../..' . '/includes/Assets.php',
-        'WPVK\\Includes\\Frontend' => __DIR__ . '/../..' . '/includes/Frontend.php',
+        'AMPV\\Api\\Admin\\Graph_Route' => __DIR__ . '/../..' . '/api/Admin/Graph_Route.php',
+        'AMPV\\Api\\Admin\\Settings_Route' => __DIR__ . '/../..' . '/api/Admin/Settings_Route.php',
+        'AMPV\\Api\\Api' => __DIR__ . '/../..' . '/api/Api.php',
+        'AMPV\\Includes\\Admin' => __DIR__ . '/../..' . '/includes/Admin.php',
+        'AMPV\\Includes\\Assets' => __DIR__ . '/../..' . '/includes/Assets.php',
+        'AMPV\\Includes\\Frontend' => __DIR__ . '/../..' . '/includes/Frontend.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

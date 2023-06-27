@@ -1,5 +1,5 @@
 <?php
-namespace WPVK\Api\Admin;
+namespace AMPV\Api\Admin;
 
 use WP_REST_Controller;
 
@@ -9,7 +9,7 @@ class Settings_Route extends WP_REST_Controller  {
     protected $rest_base;
 
     public function __construct() {
-        $this->namespace = 'wpvk/v1';
+        $this->namespace = 'ampv/v1';
         $this->rest_base = 'settings';
     }
 
@@ -42,9 +42,9 @@ class Settings_Route extends WP_REST_Controller  {
      */
     public function get_items( $request ) {
         $response = [
-            'firstname' => get_option( 'wpvk_settings_firstname', true ),
-            'lastname'  => get_option( 'wpvk_settings_lastname', true ),
-            'email'     => get_option( 'wpvk_settings_email', true ),
+            'countRows'     => get_option( 'ampv_settings_countRows', 5 ),
+            'humanReadable' => get_option( 'ampv_settings_humanReadable', true ),
+            'email'          => get_option( 'ampv_settings_email', [] ),
         ];
 
         return rest_ensure_response( $response );
@@ -54,11 +54,10 @@ class Settings_Route extends WP_REST_Controller  {
      * Get items permission check
      */
     public function get_items_permission_check( $request ) {
-        // if( current_user_can( 'administrator' ) ) {
-        //     return true;
-        // }
-
-        return true;
+        if ( current_user_can( 'manage_options' ) ) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -67,19 +66,19 @@ class Settings_Route extends WP_REST_Controller  {
     public function create_items( $request ) {
 
         // Data validation
-        $firstname = isset( $request['firstname'] ) ? sanitize_text_field( $request['firstname'] ): '';
-        $lastname  = isset( $request['lastname'] ) ? sanitize_text_field( $request['lastname'] )  : '';
-        $email     = isset( $request['email'] ) && is_email( $request['email'] ) ? sanitize_email( $request['email'] ) : '';
+        $countRows     = isset( $request['countRows'] ) ? intval( $request['countRows'] ) : 5;
+        $humanReadable = isset( $request['humanReadable'] ) ? boolval( $request['humanReadable'] ) : true ;
+        $email          = isset( $request['email'] ) && is_array( $request['email'] ) ? ( $request['email'] ) : [];
 
         // Save option data into WordPress
-        update_option( 'wpvk_settings_firstname', $firstname );
-        update_option( 'wpvk_settings_lastname', $lastname );
-        update_option( 'wpvk_settings_email', $email );
+        update_option( 'ampv_settings_countRows', $countRows );
+        update_option( 'ampv_settings_humanReadable', $humanReadable );
+        update_option( 'ampv_settings_email', $email );
 
         $response = [
-            'firstname' => $firstname,
-            'lastname'  => $lastname,
-            'email'     => $email
+            'countRows'     => $countRows,
+            'humanReadable' => $humanReadable,
+            'email'          => $email
         ];
 
         return rest_ensure_response( $response );
@@ -90,14 +89,10 @@ class Settings_Route extends WP_REST_Controller  {
      * Create item permission check
      */
     public function create_items_permission_check( $request ) {
-        return true;
-    }
-
-    /**
-     * Retrives the query parameters for the items collection
-     */
-    public function get_collection_params() {
-        return [];
+        if ( current_user_can( 'manage_options' ) ) {
+            return true;
+        }
+        return false;
     }
 
 }

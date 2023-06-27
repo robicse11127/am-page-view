@@ -4,14 +4,14 @@
  * @since           1.0.0
  * @package         WP_Vue_KickStart
  *
- * Plugin Name: WP Vue KickStart
- * Plugin URI: https://wp-vue-kickstart.com
- * Description: A wp vue starter for plugin development.
+ * Plugin Name: Awesome Motive Page view
+ * Plugin URI: https://pluginsurl.com
+ * Description: Awesome Motive Page View Plugin.
  * Version: 1.0.0
  * Author: Md. Rabiul Islam Robi
  * Author URI: https://robizstory.me
  * License: GPL v3
- * Text-Domain: textdomain
+ * Text-Domain: am-page-view
  */
 
 if( ! defined( 'ABSPATH' ) ) exit(); // No direct access allowed
@@ -21,11 +21,11 @@ if( ! defined( 'ABSPATH' ) ) exit(); // No direct access allowed
  */
 require_once 'vendor/autoload.php';
 
-use WPVK\Api\Api;
-use WPVK\Includes\Admin;
-use WPVK\Includes\Frontend;
+use AMPV\Api\Api;
+use AMPV\Includes\Admin;
+use AMPV\Includes\Frontend;
 
-final class WP_Vue_Kickstart {
+final class Am_Page_View {
 
     /**
      * Define Plugin Version
@@ -47,10 +47,11 @@ final class WP_Vue_Kickstart {
      * @since 1.0.0
      */
     public function plugin_constants() {
-        define( 'WPVK_VERSION', self::VERSION );
-        define( 'WPVK_PLUGIN_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
-        define( 'WPVK_PLUGIN_URL', trailingslashit( plugins_url( '', __FILE__ ) ) );
-        define( 'WPVK_NONCE', 'b?le*;K7.T2jk_*(+3&[G[xAc8O~Fv)2T/Zk9N:GKBkn$piN0.N%N~X91VbCn@.4' );
+        define( 'AMPV_VERSION', self::VERSION );
+        define( 'AMPV_PLUGIN_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
+        define( 'AMPV_PLUGIN_URL', trailingslashit( plugins_url( '', __FILE__ ) ) );
+        define( 'AMPV_API_DATA_URL', 'https://miusage.com/v1/challenge/2/static/' );
+        define( 'AMPV_NONCE', 'b?le*;K7.T2jk_*(+3&[G[xAc8O~Fv)2T/Zk9N:GKBkn$piN0.N%N~X91VbCn@.4' );
     }
 
     /**
@@ -72,13 +73,13 @@ final class WP_Vue_Kickstart {
      * @since 1.0.0
      */
     public function activate() {
-        $is_installed = get_option( 'wpvk_is_installed' );
+        $is_installed = get_option( 'ampv_is_installed' );
 
         if( ! $is_installed ) {
-            update_option( 'wpvk_is_installed', time() );
+            update_option( 'ampv_is_installed', time() );
         }
 
-        update_option( 'wpvk_is_installed', WPVK_VERSION );
+        update_option( 'ampv_is_installed', AMPV_VERSION );
     }
 
     /**
@@ -96,7 +97,6 @@ final class WP_Vue_Kickstart {
     public function init_plugin() {
         // init
         new Admin();
-        new Frontend();
         new Api();
     }
 
@@ -106,9 +106,9 @@ final class WP_Vue_Kickstart {
  * Initialize Main Plugin
  * @since 1.0.0
  */
-function wp_vue_kickstart() {
-    return WP_Vue_Kickstart::init();
+function am_page_view() {
+    return Am_Page_View::init();
 }
 
 // Run the Plugin
-wp_vue_kickstart();
+am_page_view();

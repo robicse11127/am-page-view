@@ -6,8 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'WPVK\\Api\\Api' => $baseDir . '/api/Api.php',
-    'WPVK\\Includes\\Admin' => $baseDir . '/includes/Admin.php',
-    'WPVK\\Includes\\Assets' => $baseDir . '/includes/Assets.php',
-    'WPVK\\Includes\\Frontend' => $baseDir . '/includes/Frontend.php',
+    'AMPV\\Api\\Admin\\Graph_Route' => $baseDir . '/api/Admin/Graph_Route.php',
+    'AMPV\\Api\\Admin\\Settings_Route' => $baseDir . '/api/Admin/Settings_Route.php',
+    'AMPV\\Api\\Api' => $baseDir . '/api/Api.php',
+    'AMPV\\Includes\\Admin' => $baseDir . '/includes/Admin.php',
+    'AMPV\\Includes\\Assets' => $baseDir . '/includes/Assets.php',
+    'AMPV\\Includes\\Frontend' => $baseDir . '/includes/Frontend.php',
+    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
 );

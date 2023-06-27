@@ -1,13 +1,12 @@
 <?php
-namespace WPVK\Api;
-
-use WP_REST_Controller;
-use WPVK\Api\Admin\Settings_Route;
+namespace AMPV\Api;
+use AMPV\Api\Admin\Settings_Route;
+use AMPV\Api\Admin\Graph_Route;
 
 /**
  * Rest API Handler
  */
-class Api extends WP_REST_Controller {
+class Api {
 
     /**
      * Construct Function
@@ -21,6 +20,7 @@ class Api extends WP_REST_Controller {
      */
     public function register_routes() {
         ( new Settings_Route() )->register_routes();
+        ( new Graph_Route() )->register_routes();
     }
 
 }
