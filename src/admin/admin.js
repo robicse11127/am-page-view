@@ -15,24 +15,24 @@ Vue.use( Router );
 Vue.use( VueMoment );
 
 const routes = [
-    {
-        path: '/', components: { default: TableTab, tab: TabNavigation },
-    },
-    {
-        path: '/graph', components: { default: GraphTab, tab: TabNavigation },
-    },
-    {
-        path: '/settings', components: { default: SettingsTab, tab: TabNavigation },
-    },
+	{
+		path: '/', components: { default: TableTab, tab: TabNavigation },
+	},
+	{
+		path: '/graph', components: { default: GraphTab, tab: TabNavigation },
+	},
+	{
+		path: '/settings', components: { default: SettingsTab, tab: TabNavigation },
+	},
 ]
 
 const router = new VueRouter({
-    routes,
+	routes,
 })
 
 new Vue({
-    el: '#ampv-admin-app',
-    store,
-    router,
-    render: h => h( App )
+	el: '#ampv-admin-app',
+	store,
+	router,
+	render: h => h( App )
 });
