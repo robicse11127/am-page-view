@@ -1,45 +1,67 @@
 .tab-menu {
-    width: 100%;
-    height: auto;
-    margin: 30px 0 0 0;
-    padding: 0;
-    li {
-        display: inline-block;
-        background-color: #fff;
-        a {
-            display: block;
-            padding: 12px 25px;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            outline: 0;
-            &.router-link-exact-active {
-                background-color: #0073aa;
-                color: #fff;
-            }
-            &:focus, &:active {
-                outline: 0;
-                border: 0;
-                box-shadow: none;
-            }
-        }
-    }
+	width: 100%;
+	height: auto;
+	margin: 30px 0 0 0;
+	padding: 0;
+	li {
+		display: inline-block;
+		background-color: #fff;
+		a {
+			display: block;
+			padding: 12px 25px;
+			text-decoration: none;
+			font-size: 16px;
+			font-weight: 500;
+			outline: 0;
+			&.router-link-exact-active {
+				background-color: #0073aa;
+				color: #fff;
+			}
+			&:focus, &:active {
+				outline: 0;
+				border: 0;
+				box-shadow: none;
+			}
+		}
+	}
 }
 .tab-container {
-    width: 96%;
-    min-height: 400px;
-    padding: 30px;
-    background-color: #fff;
-    margin-top: -5px;
+	width: 96%;
+	min-height: 400px;
+	padding: 30px;
+	background-color: #fff;
+	margin-top: -5px;
 }
 
 .am-form-table {
 
-    td, th {
-        border: 1px solid #ccc;
-    }
+	td, th {
+		border: 1px solid #ccc;
+	}
 
-    th {
-        padding: 20px 10px;
-    }
+	th {
+		padding: 20px 10px;
+	}
+}
+
+.list-of-emails {
+	ul {
+		list-style: list;
+		padding-left: 15px;
+	}
+}
+
+.hide-notification {
+	opacity: 0;
+	transition: all 0.3s ease-in-out;
+}
+
+.am-notification {
+	p {
+		display: block;
+		background-color: #42b883;
+		padding: 10px;
+		color: #fff;
+		border-radius: 4px;
+	}
 }

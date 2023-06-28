@@ -1,6 +1,6 @@
 <template>
-    <div class="tab-container">
-        <D3BarChart v-if="0 < chart_data.length" :config="chart_config" :datum="chart_data"></D3BarChart>
+	<div class="tab-container">
+		<D3BarChart v-if="0 < chart_data.length" :config="chart_config" :datum="chart_data"></D3BarChart>
 	</div>
 </template>
 
@@ -9,7 +9,7 @@ import HumanDate from '../common/HumanDate';
 import { D3BarChart } from 'vue-d3-charts';
 import { mapGetters } from 'vuex';
 export default {
-    name: 'GraphTab',
+	name: 'GraphTab',
 	components: { D3BarChart },
 	data() {
 		return {
@@ -27,8 +27,8 @@ export default {
 		}
 	},
 
-    computed: {
-        ...mapGetters([ 'GET_GRAPH_DATA', 'GET_GENERAL_SETTINGS' ]),
+	computed: {
+		...mapGetters([ 'GET_GRAPH_DATA', 'GET_GENERAL_SETTINGS' ]),
 		chart_data: {
 			get() {
 				if ( this.settings.humanReadable ) {
@@ -44,10 +44,10 @@ export default {
 		},
 
 		settings() {
-            return this.GET_GENERAL_SETTINGS;
-        }
+			return this.GET_GENERAL_SETTINGS;
+		}
 
-    },
+	},
 
 }
 </script>

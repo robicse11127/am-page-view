@@ -9,16 +9,17 @@ import { actions } from './actions';
 Vue.use( Vuex );
 
 export default new Vuex.Store({
-    state: {
-        countRows: 5,
-        humanReadable: true,
-        email: [ { id: 1, value: ampvAdminLocalizer.adminEmail } ],
-        tableHeaders: {},
-        tableRows: {},
-        graphData: [],
-        loadingText: __( 'Save Settings', 'am-page-view' )
-    },
-    actions,
-    getters,
-    mutations
+	state: {
+		countRows: '',
+		humanReadable: true,
+		email: [],
+		tableTitle: '',
+		tableHeaders: {},
+		tableRows: {},
+		graphData: [],
+		loadingText: __( 'Save Settings', 'am-page-view' )
+	},
+	actions,
+	getters,
+	mutations
 })

@@ -1,7 +1,7 @@
 <?php
 namespace AMPV\Api;
 use AMPV\Api\Admin\Settings_Route;
-use AMPV\Api\Admin\Graph_Route;
+use AMPV\Api\Admin\Am_Data_Route;
 
 /**
  * Rest API Handler
@@ -20,7 +20,7 @@ class Api {
      */
     public function register_routes() {
         ( new Settings_Route() )->register_routes();
-        ( new Graph_Route() )->register_routes();
+        ( new Am_Data_Route() )->register_routes();
     }
 
 }

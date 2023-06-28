@@ -36,7 +36,7 @@ class ComposerStaticInite0fd93276d74ff75e6985abf85e86bf3
     );
 
     public static $classMap = array (
-        'AMPV\\Api\\Admin\\Graph_Route' => __DIR__ . '/../..' . '/api/Admin/Graph_Route.php',
+        'AMPV\\Api\\Admin\\Am_Data_Route' => __DIR__ . '/../..' . '/api/Admin/Am_Data_Route.php',
         'AMPV\\Api\\Admin\\Settings_Route' => __DIR__ . '/../..' . '/api/Admin/Settings_Route.php',
         'AMPV\\Api\\Api' => __DIR__ . '/../..' . '/api/Api.php',
         'AMPV\\Includes\\Admin' => __DIR__ . '/../..' . '/includes/Admin.php',

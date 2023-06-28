@@ -6,7 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'AMPV\\Api\\Admin\\Graph_Route' => $baseDir . '/api/Admin/Graph_Route.php',
+    'AMPV\\Api\\Admin\\Am_Data_Route' => $baseDir . '/api/Admin/Am_Data_Route.php',
     'AMPV\\Api\\Admin\\Settings_Route' => $baseDir . '/api/Admin/Settings_Route.php',
     'AMPV\\Api\\Api' => $baseDir . '/api/Api.php',
     'AMPV\\Includes\\Admin' => $baseDir . '/includes/Admin.php',
