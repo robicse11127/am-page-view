@@ -8,11 +8,9 @@ import TableTab from './components/tabs/Table.vue';
 import GraphTab from './components/tabs/Graph.vue';
 import SettingsTab from './components/tabs/Settings.vue';
 import VueRouter from 'vue-router';
-import VueMoment from 'vue-moment';
 
 Vue.use( Vuex );
 Vue.use( Router );
-Vue.use( VueMoment );
 
 const routes = [
 	{
